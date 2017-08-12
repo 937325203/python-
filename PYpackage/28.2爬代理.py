@@ -5,23 +5,27 @@ import random
 
 def urlOpen(url,path):
     #过反爬虫
-    i=0
+    filePath = path + fileName
 
     # 设置请求的http头
     head = [("user-agent",
              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36")]
 
-    if i==0:
-        # 代理ip
-        proxies = {'http': '127.0.0.1:8080'}
-    else:
+    if os.path.exists(filePath):
 
-        filePath=path+fileName
+        print('文件存在')
         file=open(filePath)
         proxylist=file.readlines()
         rProxy = random.choice(proxylist)
         need = rProxy.replace('\n', '')
-        proxies= {'http': need}
+        proxies= {'http':need}
+        print('使用代理:'+str(proxies))
+
+    else:
+        print('文件不存在')
+        # 代理ip
+        proxies = {'http': '127.0.0.1:8080'}
+
 
 
     # 把代理ip丢给代理助手对象
@@ -35,7 +39,7 @@ def urlOpen(url,path):
     # 使用urllib.request.install_opener方法安装自定义Opener
     request.install_opener(diyOpener)
 
-    response = diyOpener.open(url)
+    response = diyOpener.open(url,timeout=20)
     data=response.read()
     data=data.decode('UTF-8')
 
@@ -66,7 +70,7 @@ def out(iplist,path):
 
 def run(page,path):
 
-    url0 = "http://www.kuaidaili.com/free/inha/"
+    url0 = "http://www.kuaidaili.com/free/intr/"
 
     for i in range(page):
         # 获得url
