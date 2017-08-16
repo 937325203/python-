@@ -7,7 +7,7 @@ url='http://www.whatismyip.com.tw'
 head=[("user-agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36")]
 
 #代理ip
-proxies={'http':'127.0.0.1:8080'}
+proxies={'http':'110.73.182.12:9000'}
 
 #把代理ip丢给代理助手对象
 proxyHandler=re.ProxyHandler(proxies)

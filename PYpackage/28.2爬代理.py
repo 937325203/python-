@@ -26,7 +26,7 @@ def urlOpen(url,path):
         # 代理ip
         proxies = {'http': '127.0.0.1:8080'}
 
-
+    # proxies = {'http': '127.0.0.1:8080'}
 
     # 把代理ip丢给代理助手对象
     proxyHandler = request.ProxyHandler(proxies)
